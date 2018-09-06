@@ -24,7 +24,7 @@
 #define MICROSEMI_MGMT_CLASSCODE    0x058000
 
 #define SWITCHTEC_MRPC_PAYLOAD_SIZE 1024
-#define SWITCHTEC_MAX_PFF_CSR 48
+#define SWITCHTEC_MAX_PFF_CSR 255
 
 #define SWITCHTEC_EVENT_OCCURRED BIT(0)
 #define SWITCHTEC_EVENT_CLEAR    BIT(0)
@@ -224,6 +224,13 @@ struct part_cfg_regs {
 	struct event customer_events[6];
 	u32 reserved5[3];
 } __packed;
+
+enum {
+	SWITCHTEC_USP_PORT_MODE_P2P = 0x0,
+	SWITCHTEC_USP_PORT_MODE_P2P_NT = 0x1,
+	SWITCHTEC_USP_PORT_MODE_P2P_MGT = 0x2,
+	SWITCHTEC_USP_PORT_MODE_NT = 0x3,
+};
 
 enum {
 	NTB_CTRL_PART_OP_LOCK = 0x1,
